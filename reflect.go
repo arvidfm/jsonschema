@@ -645,7 +645,7 @@ func (t *Schema) structKeywordsFromTags(f reflect.StructField, parent *Schema, p
 // read struct tags for generic keyworks
 func (t *Schema) genericKeywords(tags []string, parent *Schema, propertyName string, f reflect.StructField) {
 	for _, tag := range tags {
-		nameValue := strings.Split(tag, "=")
+		nameValue := strings.SplitN(tag, "=", 2)
 		if len(nameValue) == 2 {
 			name, val := nameValue[0], nameValue[1]
 			switch name {
@@ -710,7 +710,7 @@ func (t *Schema) genericKeywords(tags []string, parent *Schema, propertyName str
 // read struct tags for string type keyworks
 func (t *Schema) stringKeywords(tags []string) {
 	for _, tag := range tags {
-		nameValue := strings.Split(tag, "=")
+		nameValue := strings.SplitN(tag, "=", 2)
 		if len(nameValue) == 2 {
 			name, val := nameValue[0], nameValue[1]
 			switch name {
@@ -742,7 +742,7 @@ func (t *Schema) stringKeywords(tags []string) {
 // read struct tags for numberic type keyworks
 func (t *Schema) numbericKeywords(tags []string) {
 	for _, tag := range tags {
-		nameValue := strings.Split(tag, "=")
+		nameValue := strings.SplitN(tag, "=", 2)
 		if len(nameValue) == 2 {
 			name, val := nameValue[0], nameValue[1]
 			switch name {
@@ -769,7 +769,7 @@ func (t *Schema) numbericKeywords(tags []string) {
 // read struct tags for object type keyworks
 // func (t *Type) objectKeywords(tags []string) {
 //     for _, tag := range tags{
-//         nameValue := strings.Split(tag, "=")
+//         nameValue := strings.SplitN(tag, "=", 2)
 //         name, val := nameValue[0], nameValue[1]
 //         switch name{
 //             case "dependencies":
@@ -785,7 +785,7 @@ func (t *Schema) numbericKeywords(tags []string) {
 // read struct tags for array type keyworks
 func (t *Schema) arrayKeywords(tags []string) {
 	for _, tag := range tags {
-		nameValue := strings.Split(tag, "=")
+		nameValue := strings.SplitN(tag, "=", 2)
 		if len(nameValue) == 2 {
 			name, val := nameValue[0], nameValue[1]
 			switch name {
@@ -815,7 +815,7 @@ func (t *Schema) arrayKeywords(tags []string) {
 
 func (t *Schema) extraKeywords(tags []string) {
 	for _, tag := range tags {
-		nameValue := strings.Split(tag, "=")
+		nameValue := strings.SplitN(tag, "=", 2)
 		if len(nameValue) == 2 {
 			t.setExtra(nameValue[0], nameValue[1])
 		}
