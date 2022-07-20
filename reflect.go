@@ -1007,7 +1007,7 @@ func (t *Schema) MarshalJSON() ([]byte, error) {
 	}
 	if reflect.DeepEqual(&Schema{}, t) {
 		// Don't bother returning empty schemas
-		return []byte("true"), nil
+		return []byte("{}"), nil
 	}
 	type Schema_ Schema
 	b, err := json.Marshal((*Schema_)(t))
